@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Festival of Hope &middot; A Global Movement of Youth Action</title>
+<meta name="description" content="The Festival of Hope is the International Baccalaureate's flagship youth-action platform. 10,000 young people. 90 countries. 1,000+ schools. One movement.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="Festival of Hope">
+<meta property="og:description" content="A global movement of youth action.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/logos/foh-logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* Festival of Hope brand palette (locked) — white + navy contrast */
+  --white: #FFFFFF;
+  --off-white: #FAF8F2;
+  --navy: #091C36;
+  --navy-deep: #050F1E;
+  --navy-blue: #144E8C;
+  --grey: #BCBEC0;
+  --grey-soft: #DCDDDD;
+  --ink: #1F1A14;
+  --ink-soft: #5A4F3D;
+  --ink-mute: #8B7E68;
+  --vermillion: #F05332;
+  --vermillion-deep: #D8421F;
+  --red: #DA2128;
+  --gold: #FFD400;
+  --gold-warm: #F5BD2A;
+  --orange: #FAA74A;
+  --teal: #458080;
+  --cyan: #05B4C9;
+  --soft-green: #A2C07E;
+  --warm-taupe: #ADA688;
+  --rose: #F5A5A0;
+  --rule: rgba(31,26,20,0.10);
+  --rule-on-dark: rgba(255,255,255,0.16);
+
+  /* Typography */
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif-italic: "Playfair Display", Georgia, serif;
+  --hand: "Caveat", "Comic Sans MS", cursive;
+
+  --max-w: 1320px;
+  --gutter: clamp(20px, 4vw, 64px);
+  --section-y: clamp(72px, 9vw, 140px);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--navy);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; cursor: pointer; }
+a { color: inherit; }
+
+.accent {
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ============ Scroll progress ============ */
+.scroll-progress {
+  position: fixed; top: 0; left: 0;
+  width: 0%; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--vermillion), var(--cyan));
+  z-index: 200;
+  transition: width 80ms linear;
+}
+
+/* ============ Site header ============ */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px var(--gutter);
+  pointer-events: none;
+  transition: background 320ms ease, backdrop-filter 320ms ease, padding 320ms ease, border-color 320ms ease;
+  border-bottom: 1px solid transparent;
+}
+.site-header > * { pointer-events: auto; }
+.site-header.scrolled {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom-color: var(--navy);
+  padding: 12px var(--gutter);
+}
+.brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--navy);
+}
+.brand-mark .bf-icon {
+  width: 36px; height: 32px;
+  flex-shrink: 0;
+}
+.brand-mark .bf-icon svg { width: 100%; height: 100%; }
+.brand-mark .wordmark {
+  font-family: var(--sans);
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  color: var(--navy);
+  line-height: 1;
+}
+.brand-mark .wordmark .accent { color: var(--vermillion); }
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--navy);
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  transition: background 240ms ease, transform 240ms ease;
+}
+.header-cta:hover { background: var(--vermillion); transform: translateY(-1px); }
+@media (max-width: 540px) {
+  .brand-mark .wordmark { font-size: 13px; }
+  .header-cta { padding: 10px 16px; font-size: 10px; }
+}
+
+/* ============ Sections base ============ */
+section {
+  position: relative;
+  padding: var(--section-y) var(--gutter);
+}
+.section-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  position: relative;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--vermillion);
+  margin-bottom: 24px;
+}
+.eyebrow::before {
+  content: '';
+  width: 24px; height: 2px;
+  background: currentColor;
+}
+
+.big-headline {
+  font-family: var(--sans);
+  font-weight: 900;
+  font-size: clamp(40px, 7vw, 104px);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  margin: 0 0 28px;
+  color: var(--navy);
+  text-transform: uppercase;
+}
+.big-headline .accent {
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--vermillion);
+  text-transform: none;
+}
+
+.lede {
+  font-size: clamp(17px, 1.4vw, 20px);
+  line-height: 1.55;
+  max-width: 640px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* Dark section variants */
+.dark { background: var(--navy); color: var(--white); }
+.dark .big-headline { color: var(--white); }
+.dark .big-headline .accent { color: var(--gold); }
+.dark .lede { color: rgba(255,255,255,0.78); }
+.dark .eyebrow { color: var(--gold); }
+
+/* ============ HERO: title + numbers + globe ============ */
+#hero {
+  padding-top: clamp(110px, 14vh, 170px);
+  padding-bottom: clamp(60px, 7vw, 110px);
+  position: relative;
+  overflow: hidden;
+}
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 8%; right: -2%;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(255,212,0,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: 12%; left: -4%;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(5,180,201,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-title-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: clamp(28px, 3.4vw, 44px);
+  position: relative;
+  z-index: 2;
+}
+.hero-title {
+  margin: 0;
+  font-family: var(--sans);
+  font-weight: 900;
+  font-size: clamp(56px, 8vw, 132px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+  text-transform: uppercase;
+}
+.hero-title .accent {
+  font-weight: 400;
+  text-transform: none;
+  color: var(--vermillion);
+  letter-spacing: 0;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--vermillion);
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 24px; height: 2px;
+  background: currentColor;
+}
+.hero-meta {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-mute);
+  font-variant-numeric: tabular-nums;
+}
+.hero-meta strong { color: var(--navy); font-weight: 800; }
+
+.numbers-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.4vw, 18px);
+  margin-bottom: clamp(36px, 5vw, 64px);
+  position: relative;
+  z-index: 2;
+}
+.num-tile {
+  position: relative;
+  background: var(--vermillion);
+  color: var(--white);
+  padding: clamp(20px, 2.4vw, 30px);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border-radius: 18px;
+  min-height: 240px;
+  overflow: hidden;
+  transition: transform 360ms cubic-bezier(0.22,0.61,0.36,1);
+}
+.num-tile:nth-child(2) { background: var(--gold); color: var(--navy); }
+.num-tile:nth-child(3) { background: var(--cyan); color: var(--navy); }
+.num-tile:nth-child(4) { background: var(--soft-green); color: var(--navy); }
+.num-tile:hover { transform: translateY(-4px); }
+
+/* Decorative dot in corner — playbook DNA */
+.num-tile::before {
+  content: '';
+  position: absolute;
+  top: 22px; right: 22px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--white);
+  opacity: 0.55;
+}
+.num-tile:nth-child(2)::before { background: var(--navy); opacity: 0.4; }
+
+.num-tile .num-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin: 0 0 auto;
+  opacity: 0.86;
+}
+.num-tile .big-num {
+  font-family: var(--sans);
+  font-weight: 900;
+  font-size: clamp(44px, 5.2vw, 76px);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+  white-space: nowrap;
+}
+.num-tile .num-sub {
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 10px 0 0;
+  font-weight: 600;
+  opacity: 0.78;
+  letter-spacing: 0.01em;
+  max-width: 90%;
+}
+@media (max-width: 900px) {
+  .numbers-strip { grid-template-columns: repeat(2, 1fr); }
+  .num-tile { min-height: 200px; }
+}
+@media (max-width: 540px) {
+  .num-tile { min-height: 180px; padding: 20px; }
+  .num-tile .big-num { font-size: 52px; }
+}
+
+/* ============ Globe ============ */
+.globe-wrap {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+  border-radius: 32px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F2F1EE 100%);
+  border: 1px solid var(--rule);
+  z-index: 2;
+}
+#globe-canvas {
+  width: 100%;
+  height: clamp(440px, 58vh, 640px);
+  position: relative;
+}
+.globe-fallback { display: none; width: 100%; height: 460px; position: relative; }
+.globe-fallback.active { display: block; }
+
+.globe-overlay-top {
+  position: absolute;
+  top: 20px; left: 20px; right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.globe-overlay-top > * { pointer-events: auto; }
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  background: rgba(9,28,54,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 5px;
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(9,28,54,0.18);
+}
+.filter-pill {
+  background: transparent;
+  border: 0;
+  padding: 9px 16px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(255,255,255,0.66);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 200ms ease, color 200ms ease;
+}
+.filter-pill:hover { color: var(--white); }
+.filter-pill.active {
+  background: var(--vermillion);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(240,83,50,0.5);
+}
+
+.globe-event-count {
+  background: var(--gold);
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 4px 12px rgba(255,212,0,0.4);
+}
+
+.bf-marker {
+  width: 26px; height: 24px;
+  pointer-events: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.45));
+  display: block;
+  z-index: 5;
+}
+.bf-marker:hover { transform: scale(1.8); z-index: 100; }
+.bf-marker svg { width: 100%; height: 100%; display: block; }
+
+.globe-zoom-controls {
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(9,28,54,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 5px;
+  border-radius: 30px;
+  z-index: 12;
+  box-shadow: 0 6px 20px rgba(9,28,54,0.18);
+}
+.globe-zoom-controls .zoom-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 220ms ease, color 220ms ease;
+  font-family: var(--sans);
+  line-height: 1;
+}
+.globe-zoom-controls .zoom-btn:hover { background: var(--vermillion); }
+.globe-zoom-controls .zoom-btn[data-z="reset"] { font-size: 16px; }
+
+.globe-tip {
+  position: absolute;
+  background: var(--white);
+  color: var(--navy);
+  padding: 12px 16px;
+  font-size: 13px;
+  border-radius: 12px;
+  pointer-events: none;
+  font-weight: 600;
+  box-shadow: 0 8px 28px rgba(9,28,54,0.22);
+  border-left: 3px solid var(--vermillion);
+  display: none;
+  z-index: 30;
+  max-width: 280px;
+}
+.globe-tip strong { font-weight: 800; display: block; margin-bottom: 2px; color: var(--navy); }
+.globe-tip .meta { color: var(--ink-mute); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; }
+
+@media (max-width: 700px) {
+  #globe-canvas { height: 420px; }
+  .globe-wrap { border-radius: 22px; }
+  .globe-overlay-top { flex-direction: column; align-items: stretch; }
+  .filter-pills { width: 100%; overflow-x: auto; flex-wrap: nowrap; }
+}
+
+/* ============ Butterfly swarm (loading) ============ */
+.butterfly-swarm {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 95;
+  overflow: hidden;
+}
+.swarm-bf {
+  position: absolute;
+  width: 36px;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.swarm-bf svg { width: 100%; height: auto; display: block; }
+@keyframes flyAcross {
+  0%   { opacity: 0; transform: translate(-100px, 0px) rotate(-12deg) scale(0.85); }
+  8%   { opacity: 1; }
+  25%  { transform: translate(25vw, -30px) rotate(8deg) scale(1); }
+  50%  { transform: translate(50vw, 20px) rotate(-8deg) scale(0.95); }
+  75%  { transform: translate(75vw, -25px) rotate(10deg) scale(1.02); }
+  92%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(110vw, 10px) rotate(-12deg) scale(0.9); }
+}
+
+/* ============ VIDEOS — DARK SECTION ============ */
+#videos {
+  background: var(--navy);
+  color: var(--white);
+  padding-top: clamp(80px, 9vw, 140px);
+  padding-bottom: clamp(80px, 9vw, 140px);
+  position: relative;
+  overflow: hidden;
+}
+#videos::before {
+  /* HOPE-sign style decoration on right */
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 80px; height: 100%;
+  background:
+    linear-gradient(to bottom,
+      var(--red) 0%, var(--red) 14%,
+      var(--orange) 14%, var(--orange) 22%,
+      var(--cyan) 22%, var(--cyan) 36%,
+      var(--gold) 36%, var(--gold) 48%,
+      var(--soft-green) 48%, var(--soft-green) 58%,
+      var(--navy-blue) 58%, var(--navy-blue) 72%,
+      var(--vermillion) 72%, var(--vermillion) 84%,
+      var(--warm-taupe) 84%, var(--warm-taupe) 100%
+    );
+  opacity: 0.95;
+  pointer-events: none;
+}
+@media (max-width: 800px) {
+  #videos::before { width: 12px; }
+}
+
+.videos-headline {
+  text-align: left;
+  max-width: 1000px;
+  margin-bottom: 56px;
+  position: relative;
+  z-index: 2;
+}
+.videos-headline .lede { margin: 0; max-width: 640px; }
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.2vw, 28px);
+  position: relative;
+  z-index: 2;
+}
+.video-tile {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 18px;
+  transition: transform 320ms cubic-bezier(0.22,0.61,0.36,1), box-shadow 320ms ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  background: var(--navy-deep);
+}
+.video-tile:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.55); }
+.video-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+.video-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 600ms cubic-bezier(0.22,0.61,0.36,1);
+}
+.video-tile:hover .video-thumb img { transform: scale(1.06); }
+.video-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(9,28,54,0.55) 0%, rgba(9,28,54,0) 60%);
+  pointer-events: none;
+}
+.video-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px; height: 64px;
+  border-radius: 999px;
+  background: var(--vermillion);
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  transition: background 240ms ease, transform 240ms ease;
+  box-shadow: 0 6px 18px rgba(240,83,50,0.5);
+}
+.video-tile:hover .video-play { background: var(--gold); transform: translate(-50%, -50%) scale(1.06); }
+.video-play svg { width: 22px; height: 22px; fill: var(--white); margin-left: 3px; }
+.video-tile:hover .video-play svg { fill: var(--navy); }
+.video-meta {
+  padding: 18px 22px 22px;
+  background: var(--navy-deep);
+  border-top: 4px solid var(--vermillion);
+}
+.video-tile:nth-child(2) .video-meta { border-top-color: var(--gold); }
+.video-tile:nth-child(3) .video-meta { border-top-color: var(--cyan); }
+.video-tile:nth-child(4) .video-meta { border-top-color: var(--soft-green); }
+.video-tile:nth-child(5) .video-meta { border-top-color: var(--orange); }
+.video-tile:nth-child(6) .video-meta { border-top-color: var(--rose); }
+.video-title {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.4;
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+.video-tile.playing .video-thumb { display: none; }
+.video-tile.playing .video-thumb-iframe { width: 100%; aspect-ratio: 16/9; }
+.video-tile.playing iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+.video-cta-row { margin-top: 64px; display: flex; justify-content: center; position: relative; z-index: 2; }
+
+@media (max-width: 900px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .video-grid { grid-template-columns: 1fr; } }
+
+/* ============ Pill button system ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 30px;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  transition: background 240ms ease, color 240ms ease, transform 240ms ease, box-shadow 240ms ease;
+  white-space: nowrap;
+}
+.btn::after { content: '\2192'; font-size: 16px; letter-spacing: 0; }
+.btn-primary {
+  background: var(--vermillion);
+  color: var(--white);
+  padding: 20px 36px;
+  box-shadow: 0 8px 24px rgba(240,83,50,0.4), 0 0 0 4px rgba(255,212,0,0.0);
+}
+.btn-primary:hover {
+  background: var(--vermillion-deep);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(240,83,50,0.5), 0 0 0 4px rgba(255,212,0,0.4);
+}
+.btn-secondary {
+  background: var(--navy);
+  color: var(--white);
+  padding: 20px 36px;
+  box-shadow: 0 8px 24px rgba(9,28,54,0.3);
+}
+.btn-secondary:hover { background: var(--navy-blue); transform: translateY(-3px); }
+.btn-ghost {
+  background: var(--gold);
+  color: var(--navy);
+  padding: 20px 36px;
+  box-shadow: 0 8px 24px rgba(255,212,0,0.4);
+}
+.btn-ghost:hover { background: var(--vermillion); color: var(--white); transform: translateY(-3px); }
+.dark .btn-ghost { background: var(--gold); color: var(--navy); }
+
+/* ============ CTA — Host your own ============ */
+#cta {
+  padding-top: clamp(100px, 11vw, 180px);
+  padding-bottom: clamp(100px, 11vw, 180px);
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.cta-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(40px, 5vw, 96px);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.cta-content {
+  max-width: 760px;
+}
+.cta-content .big-headline {
+  font-size: clamp(48px, 8vw, 128px);
+}
+.cta-content p {
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 40px;
+  max-width: 560px;
+}
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+.cta-email {
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+.cta-email a {
+  color: var(--vermillion);
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 1px solid var(--vermillion);
+  transition: color 240ms ease, border-color 240ms ease;
+}
+.cta-email a:hover { color: var(--navy); border-color: var(--navy); }
+
+/* HOPE-sign decoration on right of CTA */
+.hope-sign {
+  width: 140px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hope-sign > div {
+  border-radius: 4px;
+}
+.hs-1 { height: 60px; background: var(--red); }
+.hs-2 { height: 40px; background: var(--orange); margin-left: 30%; }
+.hs-3 { height: 80px; background: var(--cyan); }
+.hs-4 { height: 90px; background: var(--grey); border-radius: 999px; position: relative; display: flex; align-items: center; justify-content: center; }
+.hs-4::after { content: ''; width: 30px; height: 30px; border-radius: 999px; background: var(--vermillion); }
+.hs-5 { height: 50px; background: var(--gold); }
+.hs-6 { height: 70px; background: var(--navy-blue); }
+.hs-7 { height: 30px; background: var(--soft-green); margin-left: 25%; width: 75%; }
+
+/* Hand-drawn arrow doodle */
+.cta-doodle {
+  position: absolute;
+  top: 38%;
+  right: 22%;
+  width: 130px;
+  pointer-events: none;
+  z-index: 3;
+  transform: rotate(8deg);
+}
+.cta-doodle .scribble {
+  font-family: var(--hand);
+  font-size: 22px;
+  color: var(--gold-warm);
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: -6px;
+  font-weight: 700;
+  text-shadow: 1px 1px 0 var(--navy);
+}
+
+@media (max-width: 900px) {
+  .cta-inner { grid-template-columns: 1fr; gap: 48px; }
+  .hope-sign { width: 100%; max-width: 240px; flex-direction: row; height: 80px; gap: 6px; }
+  .hope-sign > div { flex: 1; height: 100% !important; margin: 0 !important; width: auto !important; }
+  .cta-doodle { display: none; }
+}
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.78);
+  padding: 64px var(--gutter) 40px;
+  position: relative;
+  overflow: hidden;
+}
+footer::before {
+  /* small HOPE-sign in corner */
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 6px;
+  background: linear-gradient(90deg,
+    var(--red) 0%, var(--red) 12%,
+    var(--orange) 12%, var(--orange) 22%,
+    var(--cyan) 22%, var(--cyan) 38%,
+    var(--gold) 38%, var(--gold) 50%,
+    var(--soft-green) 50%, var(--soft-green) 64%,
+    var(--navy-blue) 64%, var(--navy-blue) 78%,
+    var(--vermillion) 78%, var(--vermillion) 100%
+  );
+}
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 48px;
+  align-items: center;
+}
+.footer-logo {
+  height: 56px;
+  width: auto;
+  display: block;
+  background: var(--white);
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+.footer-tag {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+}
+.footer-tag .accent { color: var(--gold); font-weight: 400; text-transform: none; }
+.footer-meta {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-align: right;
+}
+.footer-meta a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 240ms ease;
+}
+.footer-meta a:hover { border-bottom-color: var(--gold); }
+@media (max-width: 800px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+  .footer-tag, .footer-meta { text-align: center; }
+}
+
+/* ============ Reveal-on-scroll ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 800ms cubic-bezier(0.22,0.61,0.36,1), transform 800ms cubic-bezier(0.22,0.61,0.36,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.delay-1 { transition-delay: 80ms; }
+.reveal.delay-2 { transition-delay: 160ms; }
+.reveal.delay-3 { transition-delay: 240ms; }
+.reveal.delay-4 { transition-delay: 320ms; }
+
+/* ============ Reduced motion ============ */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.visible { opacity: 1; transform: none; transition: none; }
+  .swarm-bf, .bf-marker { animation: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<div class="butterfly-swarm" id="butterflySwarm" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <a href="#hero" class="brand-mark" aria-label="Festival of Hope home">
+    <span class="bf-icon">
+      <svg viewBox="0 0 67 59" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M65.0243 46.205C64.6509 44.5631 64.2622 42.829 63.945 41.049C62.0627 41.673 60.0473 42.0157 57.9552 42.0157C53.1521 42.0157 48.7633 40.2357 45.4231 37.3047C45.4334 37.6525 45.4385 38.0055 45.4385 38.3533C45.4385 42.783 44.6917 47.0388 43.3208 51.0081C49.2441 55.3969 56.3439 58.3484 61.2391 58.3484C67.766 58.3484 66.5844 53.1156 65.0192 46.205H65.0243Z" fill="#FFD400"/>
+        <path d="M63.9909 24.8646C64.1802 22.9669 64.3694 21.0641 64.5024 19.2329C62.9372 18.2201 61.0702 17.6318 59.065 17.6318C53.5407 17.6318 49.0649 22.082 49.0649 27.5757C49.0649 30.2816 50.1545 32.7317 51.9192 34.5271C53.7351 36.3737 56.2671 37.5195 59.0701 37.5195C60.6149 37.5195 62.0778 37.1717 63.3822 36.5476C63.3413 35.9184 63.3157 35.2842 63.3157 34.655C63.3157 34.6141 63.3157 34.5681 63.3157 34.5271C63.3259 31.5808 63.6584 28.2304 63.996 24.8646H63.9909Z" fill="#E9E9E1"/>
+        <path d="M8.90624 0C1.38699 0 0.466268 9.8671 2.66578 22.6242C3.83203 22.3583 5.04432 22.215 6.29241 22.215C15.2592 22.215 22.5279 29.4427 22.5279 38.3533C22.5279 41.2178 21.7759 43.9032 20.4613 46.2357C26.6302 42.3226 31.5816 36.2919 31.5816 31.0489C31.5714 20.9363 17.3769 0 8.90624 0Z" fill="#BCBEC0"/>
+        <path d="M45.4283 37.3048C45.4027 36.3687 45.3465 35.4429 45.2544 34.5273C44.6661 28.5426 42.7173 22.9568 39.7198 18.0821C39.7045 18.0565 39.684 18.0309 39.6687 18.0054C35.464 23.453 32.4614 29.6525 32.4614 34.6603C32.4614 39.0951 35.198 43.5862 39.1316 47.4481C40.4206 48.7115 41.8375 49.9085 43.326 51.0133C44.6968 47.044 45.4436 42.7882 45.4436 38.3585C45.4436 38.0056 45.4385 37.6577 45.4283 37.3099V37.3048Z" fill="#BCBEC0"/>
+        <path d="M6.28728 22.2151C5.03919 22.2151 3.8269 22.3583 2.66065 22.6243C2.93687 24.2356 3.26424 25.8929 3.63764 27.586C4.59417 31.9492 3.00337 35.939 1.63251 39.3713C-0.101523 43.714 -1.47749 47.1718 3.10567 49.356C7.95993 51.6732 14.7324 49.8624 20.4511 46.2358C21.7657 43.9033 22.5176 41.2178 22.5176 38.3533C22.5176 29.4377 15.249 22.2151 6.28217 22.2151H6.28728Z" fill="#F05332"/>
+        <path d="M59.0653 17.6316C61.0704 17.6316 62.9375 18.2199 64.5027 19.2327C65.0602 11.4474 64.5845 4.86426 58.6203 4.86426C53.0141 4.86426 45.3619 10.6853 39.7864 17.8516C39.7506 17.9027 39.7096 17.9488 39.6738 17.9999C39.6892 18.0255 39.7096 18.0511 39.725 18.0767C42.7224 22.9565 44.6764 28.5422 45.2596 34.5218C45.3516 35.4374 45.4079 36.3633 45.4335 37.2993C48.7737 40.2303 53.1573 42.0104 57.9656 42.0104C60.0576 42.0104 62.073 41.6677 63.9554 41.0436C63.6945 39.5653 63.4848 38.0564 63.3876 36.5423C62.0832 37.1663 60.6203 37.5142 59.0755 37.5142C56.2724 37.5142 53.7405 36.3684 51.9246 34.5218C50.1599 32.7264 49.0703 30.2763 49.0703 27.5703C49.0703 22.0767 53.5461 17.6265 59.0704 17.6265L59.0653 17.6316Z" fill="#458080"/>
+      </svg>
+    </span>
+    <span class="wordmark">Festival of <span class="accent">Hope</span></span>
+  </a>
+  <a href="#cta" class="header-cta">Host your own</a>
+</header>
+
+<main>
+
+<!-- ============ HERO: title + numbers + globe ============ -->
+<section id="hero">
+  <div class="section-inner">
+    <div class="hero-title-row reveal">
+      <div>
+        <p class="hero-eyebrow">Since 2022 &middot; A global movement</p>
+        <h1 class="hero-title">Festival of <span class="accent">Hope</span>.</h1>
+      </div>
+    </div>
+
+    <div class="numbers-strip">
+      <div class="num-tile reveal delay-1">
+        <p class="num-label">Young people</p>
+        <div class="big-num" data-target="10000" data-suffix="+">0</div>
+        <p class="num-sub">engaged annually, in person and virtual.</p>
+      </div>
+      <div class="num-tile reveal delay-2">
+        <p class="num-label">Countries</p>
+        <div class="big-num" data-target="90" data-suffix="+">0</div>
+        <p class="num-sub">where young people are taking action.</p>
+      </div>
+      <div class="num-tile reveal delay-3">
+        <p class="num-label">Schools</p>
+        <div class="big-num" data-target="1000" data-suffix="+">0</div>
+        <p class="num-sub">IB and non-IB, running festival events.</p>
+      </div>
+      <div class="num-tile reveal delay-4">
+        <p class="num-label">Regions</p>
+        <div class="big-num" data-target="10" data-suffix="">0</div>
+        <p class="num-sub">a truly global portfolio of action.</p>
+      </div>
+    </div>
+
+    <div class="globe-wrap reveal">
+      <div class="globe-overlay-top">
+        <div class="filter-pills" role="tablist" aria-label="Filter events by year">
+          <button class="filter-pill active" data-year="all">All</button>
+          <button class="filter-pill" data-year="2022">2022</button>
+          <button class="filter-pill" data-year="2023">2023</button>
+          <button class="filter-pill" data-year="2024">2024</button>
+          <button class="filter-pill" data-year="2025">2025</button>
+          <button class="filter-pill" data-year="2026">2026</button>
+        </div>
+        <div class="globe-event-count" id="eventCount">- events</div>
+      </div>
+      <div id="globe-canvas" role="img" aria-label="Interactive globe of Festival of Hope events"></div>
+      <div class="globe-fallback" id="globeFallback" aria-hidden="true">
+        <svg width="100%" height="100%" viewBox="0 0 1000 460" preserveAspectRatio="xMidYMid meet" id="fallbackSvg" style="background: linear-gradient(180deg, #FFFFFF 0%, #F2F1EE 100%);"></svg>
+      </div>
+      <div class="globe-tip" id="globeTip"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEOS — DARK ============ -->
+<section id="videos" class="dark">
+  <div class="section-inner">
+    <div class="videos-headline reveal">
+      <p class="eyebrow">In their words</p>
+      <h2 class="big-headline">Hope is a <span class="accent">doing</span> word.</h2>
+      <p class="lede">Six festivals, six communities. From New York to Bogot&aacute; to Jakarta, young people turning conversation into action.</p>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-tile reveal delay-1" data-yt="teWA67wyKJo">
+        <div class="video-thumb">
+          <img src="assets/img/videos/teWA67wyKJo.jpg" alt="Festival of Hope: 3 Years of Global Action" loading="lazy">
+          <div class="video-play"><svg viewBox="0 0 16 16" aria-hidden="true"><polygon points="3,2 14,8 3,14"/></svg></div>
+        </div>
+        <div class="video-meta">
+          <p class="video-title">Three Years of Global Action: From a Seed to a Movement</p>
+        </div>
+      </div>
+
+      <div class="video-tile reveal delay-2" data-yt="GxWjdSC_GSc">
+        <div class="video-thumb">
+          <img src="assets/img/videos/GxWjdSC_GSc.jpg" alt="Festival of Hope at Global Jaya School, Jakarta" loading="lazy">
+          <div class="video-play"><svg viewBox="0 0 16 16" aria-hidden="true"><polygon points="3,2 14,8 3,14"/></svg></div>
+        </div>
+        <div class="video-meta">
+          <p class="video-title">Global Jaya School, Jakarta: Seeding Hope Across Indonesia</p>
+        </div>
+      </div>
+
+      <div class="video-tile reveal delay-3" data-yt="BhLtAPfGMrw">
+        <div class="video-thumb">
+          <img src="assets/img/videos/BhLtAPfGMrw.jpg" alt="Festival of Hope at Parkland High School, NC" loading="lazy">
+          <div class="video-play"><svg viewBox="0 0 16 16" aria-hidden="true"><polygon points="3,2 14,8 3,14"/></svg></div>
+        </div>
+        <div class="video-meta">
+          <p class="video-title">Parkland High School, NC: Service, Community &amp; Well-being</p>
+        </div>
+      </div>
+
+      <div class="video-tile reveal delay-1" data-yt="SmCSL7xQBXQ">
+        <div class="video-thumb">
+          <img src="assets/img/videos/SmCSL7xQBXQ.jpg" alt="Festival de la Esperanza Colombia" loading="lazy">
+          <div class="video-play"><svg viewBox="0 0 16 16" aria-hidden="true"><polygon points="3,2 14,8 3,14"/></svg></div>
+        </div>
+        <div class="video-meta">
+          <p class="video-title">Festival de la Esperanza, Bogot&aacute;: Colombia, June 2024</p>
+        </div>
+      </div>
+
+      <div class="video-tile reveal delay-2" data-yt="FN6XIpLlO8A">
+        <div class="video-thumb">
+          <img src="assets/img/videos/FN6XIpLlO8A.jpg" alt="Festival of Hope One Year Anniversary" loading="lazy">
+          <div class="video-play"><svg viewBox="0 0 16 16" aria-hidden="true"><polygon points="3,2 14,8 3,14"/></svg></div>
+        </div>
+        <div class="video-meta">
+          <p class="video-title">One Year Anniversary Recap</p>
+        </div>
+      </div>
+
+      <div class="video-tile reveal delay-3" data-yt="X5C63dilpcs">
+        <div class="video-thumb">
+          <img src="assets/img/videos/X5C63dilpcs.jpg" alt="Festival of Hope India" loading="lazy">
+          <div class="video-play"><svg viewBox="0 0 16 16" aria-hidden="true"><polygon points="3,2 14,8 3,14"/></svg></div>
+        </div>
+        <div class="video-meta">
+          <p class="video-title">Festival of Hope India: New Delhi &amp; Mumbai, May 2023</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-cta-row reveal">
+      <a href="https://www.youtube.com/@InternationalBaccalaureate/search?query=festival%20of%20hope" target="_blank" rel="noopener" class="btn btn-ghost">Watch every Festival of Hope on YouTube</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA — Host your own ============ -->
+<section id="cta">
+  <div class="section-inner">
+    <div class="cta-inner">
+      <div class="cta-content reveal">
+        <p class="eyebrow">Get involved</p>
+        <h2 class="big-headline">Host your own <span class="accent">Festival of Hope</span>.</h2>
+        <p>Every Festival of Hope begins with a conversation. Whether you are an IB or non-IB school, a teacher, a coordinator or a young person ready to take action, we would love to hear from you.</p>
+        <div class="cta-actions">
+          <a href="assets/playbook.pdf" target="_blank" rel="noopener" class="btn btn-primary" id="playbookLink">Read the playbook</a>
+          <a href="https://forms.monday.com/forms/6df9cd4818ce27c566397913432af965?r=euc1" target="_blank" rel="noopener" class="btn btn-secondary">Submit an inquiry</a>
+        </div>
+        <p class="cta-email">or email <a href="mailto:support@ibo.org?subject=Festival%20of%20Hope%20enquiry">support@ibo.org</a></p>
+      </div>
+      <div class="hope-sign reveal delay-1" aria-hidden="true">
+        <div class="hs-1"></div>
+        <div class="hs-2"></div>
+        <div class="hs-3"></div>
+        <div class="hs-4"></div>
+        <div class="hs-5"></div>
+        <div class="hs-6"></div>
+        <div class="hs-7"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <img src="assets/img/logos/ib-logo.png" alt="International Baccalaureate" class="footer-logo">
+    <div class="footer-tag">An International Baccalaureate <span class="accent">Youth Initiative</span></div>
+    <div class="footer-meta">
+      <a href="https://hope.ibo.org" target="_blank" rel="noopener">hope.ibo.org</a> &middot; #festivalofhope
+    </div>
+  </div>
+</footer>
+
+<!-- Self-hosted libs (globe.gl is self-contained — bundles its own three) -->
+<script src="assets/lib/globe.gl.min.js"></script>
+<script src="assets/lib/gsap.min.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.matchMedia('(max-width: 700px)').matches;
+
+  const BRAND = {
+    vermillion: '#F05332',
+    red: '#DA2128',
+    gold: '#FFD400',
+    orange: '#FAA74A',
+    cyan: '#05B4C9',
+    teal: '#458080',
+    navyBlue: '#144E8C',
+    softGreen: '#A2C07E',
+    rose: '#F5A5A0',
+    grey: '#BCBEC0',
+    cream: '#E9E9E1',
+    taupe: '#ADA688'
+  };
+
+  function butterflySvg(primary, secondary) {
+    primary = primary || BRAND.vermillion;
+    secondary = secondary || BRAND.gold;
+    return `<svg viewBox="0 0 67 59" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M65.0243 46.205C64.6509 44.5631 64.2622 42.829 63.945 41.049C62.0627 41.673 60.0473 42.0157 57.9552 42.0157C53.1521 42.0157 48.7633 40.2357 45.4231 37.3047C45.4334 37.6525 45.4385 38.0055 45.4385 38.3533C45.4385 42.783 44.6917 47.0388 43.3208 51.0081C49.2441 55.3969 56.3439 58.3484 61.2391 58.3484C67.766 58.3484 66.5844 53.1156 65.0192 46.205H65.0243Z" fill="${secondary}"/>
+      <path d="M63.9909 24.8646C64.1802 22.9669 64.3694 21.0641 64.5024 19.2329C62.9372 18.2201 61.0702 17.6318 59.065 17.6318C53.5407 17.6318 49.0649 22.082 49.0649 27.5757C49.0649 30.2816 50.1545 32.7317 51.9192 34.5271C53.7351 36.3737 56.2671 37.5195 59.0701 37.5195C60.6149 37.5195 62.0778 37.1717 63.3822 36.5476C63.3413 35.9184 63.3157 35.2842 63.3157 34.655C63.3157 34.6141 63.3157 34.5681 63.3157 34.5271C63.3259 31.5808 63.6584 28.2304 63.996 24.8646H63.9909Z" fill="${primary}"/>
+      <path d="M8.90624 0C1.38699 0 0.466268 9.8671 2.66578 22.6242C3.83203 22.3583 5.04432 22.215 6.29241 22.215C15.2592 22.215 22.5279 29.4427 22.5279 38.3533C22.5279 41.2178 21.7759 43.9032 20.4613 46.2357C26.6302 42.3226 31.5816 36.2919 31.5816 31.0489C31.5714 20.9363 17.3769 0 8.90624 0Z" fill="${primary}"/>
+      <path d="M45.4283 37.3048C45.4027 36.3687 45.3465 35.4429 45.2544 34.5273C44.6661 28.5426 42.7173 22.9568 39.7198 18.0821C39.7045 18.0565 39.684 18.0309 39.6687 18.0054C35.464 23.453 32.4614 29.6525 32.4614 34.6603C32.4614 39.0951 35.198 43.5862 39.1316 47.4481C40.4206 48.7115 41.8375 49.9085 43.326 51.0133C44.6968 47.044 45.4436 42.7882 45.4436 38.3585C45.4436 38.0056 45.4385 37.6577 45.4283 37.3099V37.3048Z" fill="${secondary}"/>
+      <path d="M6.28728 22.2151C5.03919 22.2151 3.8269 22.3583 2.66065 22.6243C2.93687 24.2356 3.26424 25.8929 3.63764 27.586C4.59417 31.9492 3.00337 35.939 1.63251 39.3713C-0.101523 43.714 -1.47749 47.1718 3.10567 49.356C7.95993 51.6732 14.7324 49.8624 20.4511 46.2358C21.7657 43.9033 22.5176 41.2178 22.5176 38.3533C22.5176 29.4377 15.249 22.2151 6.28217 22.2151H6.28728Z" fill="${secondary}"/>
+      <path d="M59.0653 17.6316C61.0704 17.6316 62.9375 18.2199 64.5027 19.2327C65.0602 11.4474 64.5845 4.86426 58.6203 4.86426C53.0141 4.86426 45.3619 10.6853 39.7864 17.8516C39.7506 17.9027 39.7096 17.9488 39.6738 17.9999C39.6892 18.0255 39.7096 18.0511 39.725 18.0767C42.7224 22.9565 44.6764 28.5422 45.2596 34.5218C45.3516 35.4374 45.4079 36.3633 45.4335 37.2993C48.7737 40.2303 53.1573 42.0104 57.9656 42.0104C60.0576 42.0104 62.073 41.6677 63.9554 41.0436C63.6945 39.5653 63.4848 38.0564 63.3876 36.5423C62.0832 37.1663 60.6203 37.5142 59.0755 37.5142C56.2724 37.5142 53.7405 36.3684 51.9246 34.5218C50.1599 32.7264 49.0703 30.2763 49.0703 27.5703C49.0703 22.0767 53.5461 17.6265 59.0704 17.6265L59.0653 17.6316Z" fill="${primary}"/>
+    </svg>`;
+  }
+
+  // ---------------- Butterfly swarm — converges INTO the globe ----------------
+  function spawnSwarm() {
+    if (reduceMotion || !window.gsap) return;
+    const swarm = document.getElementById('butterflySwarm');
+    const globeEl = document.getElementById('globe-canvas');
+    if (!swarm || !globeEl) return;
+
+    const palette = [
+      [BRAND.cyan, BRAND.gold],
+      [BRAND.vermillion, BRAND.gold],
+      [BRAND.gold, BRAND.vermillion],
+      [BRAND.softGreen, BRAND.gold],
+      [BRAND.navyBlue, BRAND.cyan],
+      [BRAND.rose, BRAND.gold],
+      [BRAND.cyan, BRAND.vermillion],
+      [BRAND.orange, BRAND.cyan],
+      [BRAND.teal, BRAND.gold],
+      [BRAND.gold, BRAND.softGreen],
+      [BRAND.vermillion, BRAND.cyan],
+      [BRAND.cyan, BRAND.softGreen],
+    ];
+
+    // Wait one frame so layout is stable then read globe rect
+    requestAnimationFrame(() => {
+      const rect = globeEl.getBoundingClientRect();
+      const targetX = rect.left + rect.width / 2;
+      const targetY = rect.top + rect.height / 2;
+
+      palette.forEach((colors, i) => {
+        const el = document.createElement('div');
+        el.className = 'swarm-bf';
+        el.innerHTML = butterflySvg(colors[0], colors[1]);
+        const startX = -120 + Math.random() * 60;
+        const startY = 60 + Math.random() * (window.innerHeight * 0.65);
+        const size = 28 + Math.round(Math.random() * 22);
+        el.style.left = startX + 'px';
+        el.style.top = startY + 'px';
+        el.style.width = size + 'px';
+        el.style.opacity = 0;
+        swarm.appendChild(el);
+
+        const totalDelay = i * 0.16;
+        // Fade in + initial drift
+        gsap.to(el, {
+          opacity: 1,
+          x: 60 + Math.random() * 40,
+          y: -10 + Math.random() * 20,
+          rotation: -8 + Math.random() * 16,
+          duration: 0.55,
+          delay: totalDelay,
+          ease: 'power2.out',
+        });
+        // Curve toward globe center, scale down, fade out
+        gsap.to(el, {
+          x: targetX - startX + (-20 + Math.random() * 40),
+          y: targetY - startY + (-20 + Math.random() * 40),
+          scale: 0.18,
+          opacity: 0,
+          rotation: '+=' + (-30 + Math.random() * 60),
+          duration: 2.2 + Math.random() * 0.8,
+          delay: totalDelay + 0.5,
+          ease: 'power2.in',
+        });
+      });
+      // Cleanup after the longest possible flight finishes
+      setTimeout(() => { swarm.innerHTML = ''; swarm.style.display = 'none'; }, 7000);
+    });
+  }
+  // Defer swarm slightly so layout settles
+  setTimeout(spawnSwarm, 200);
+
+  // ---------------- Scroll progress ----------------
+  const sp = document.getElementById('scrollProgress');
+  function updateProgress() {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    sp.style.width = max > 0 ? (h.scrollTop / max * 100) + '%' : '0%';
+  }
+  window.addEventListener('scroll', updateProgress, {passive: true});
+  updateProgress();
+
+  // ---------------- Site header background ----------------
+  const header = document.getElementById('siteHeader');
+  function updateHeader(){
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  }
+  window.addEventListener('scroll', updateHeader, {passive: true});
+  updateHeader();
+
+  // ---------------- Reveal-on-scroll ----------------
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ---------------- Number count-ups ----------------
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const startTime = performance.now();
+    function step(now) {
+      const t = Math.min(1, (now - startTime) / duration);
+      const eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+      const value = Math.round(eased * target);
+      el.textContent = value.toLocaleString() + suffix;
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const numIo = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        animateCount(en.target);
+        numIo.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.big-num[data-target]').forEach(el => {
+    if (reduceMotion) {
+      el.textContent = parseInt(el.dataset.target, 10).toLocaleString() + (el.dataset.suffix || '');
+    } else {
+      numIo.observe(el);
+    }
+  });
+
+  // ---------------- Lite YouTube embeds ----------------
+  document.querySelectorAll('.video-tile').forEach(tile => {
+    tile.addEventListener('click', (e) => {
+      // Only trigger when clicking on the thumb or play button area
+      if (tile.classList.contains('playing')) return;
+      const id = tile.dataset.yt;
+      const thumb = tile.querySelector('.video-thumb');
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.title = 'Festival of Hope video';
+      iframe.style.cssText = 'width:100%;aspect-ratio:16/9;border:0;display:block;';
+      thumb.replaceWith(iframe);
+      tile.classList.add('playing');
+    });
+  });
+
+  // ---------------- Globe (3D rotating, butterfly markers) ----------------
+  let globeInst = null;
+  let allEvents = [];
+  let activeYear = 'all';
+
+  function paletteFor(event) {
+    if (event.year >= 2026) return [BRAND.gold, BRAND.vermillion];
+    if (event.year === 2025) return [BRAND.cyan, BRAND.gold];
+    if (event.year === 2024) return [BRAND.vermillion, BRAND.gold];
+    if (event.year === 2023) return [BRAND.softGreen, BRAND.cyan];
+    return [BRAND.rose, BRAND.gold];
+  }
+
+  function showDebug(msg, color) {
+    let dbg = document.getElementById('fohDebug');
+    if (!dbg) {
+      dbg = document.createElement('div');
+      dbg.id = 'fohDebug';
+      dbg.style.cssText = 'position:fixed;bottom:12px;left:12px;padding:10px 14px;background:rgba(9,28,54,0.92);color:#fff;font-family:monospace;font-size:11px;z-index:9999;border-radius:6px;max-width:520px;line-height:1.45;border-left:3px solid ' + (color || '#FFD400') + ';';
+      document.body.appendChild(dbg);
+    }
+    dbg.textContent = msg;
+  }
+
+  function initGlobe(events) {
+    if (typeof Globe === 'undefined' || !window.Globe) {
+      showDebug('[Globe] library not loaded — using 2D fallback', '#F05332');
+      showFallback(events);
+      return;
+    }
+    const wrap = document.getElementById('globe-canvas');
+    if (!wrap) { showDebug('[Globe] #globe-canvas not found', '#F05332'); return; }
+
+    try {
+      // Minimal init, known to work in globe.gl 2.x
+      globeInst = Globe()(wrap)
+        .globeImageUrl('assets/lib/earth-blue-marble.jpg')
+        .backgroundColor('rgba(0,0,0,0)')
+        .atmosphereColor('#FFD400')
+        .atmosphereAltitude(0.22);
+
+      // Per-year colored dot markers (cohesive with photo-real globe)
+      try {
+        globeInst
+          .pointsData([])
+          .pointAltitude(0.012)
+          .pointRadius(0.55)
+          .pointResolution(10)
+          .pointColor(d => paletteFor(d)[0])
+          .pointLabel(d => `
+            <div style="background:#fff;color:#091C36;padding:10px 14px;border-radius:10px;border-left:3px solid ${paletteFor(d)[0]};box-shadow:0 8px 24px rgba(0,0,0,0.22);font-family:'Helvetica Neue',Arial,sans-serif;max-width:240px;">
+              <div style="font-weight:800;font-size:13px;margin-bottom:2px;">${d.name}</div>
+              <div style="color:#5A4F3D;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;">${d.country} &middot; ${d.year || ''}</div>
+            </div>
+          `);
+      } catch (e) {
+        showDebug('[Globe] points error: ' + e.message, '#F05332');
+      }
+
+      // Subtle pulsing rings — adds life without clashing with the photo-real globe
+      try {
+        globeInst
+          .ringsData([])
+          .ringColor(d => () => paletteFor(d)[0])
+          .ringMaxRadius(2.4)
+          .ringPropagationSpeed(1.6)
+          .ringRepeatPeriod(2400)
+          .ringAltitude(0.011);
+      } catch (e) {}
+
+      // Controls
+      let ctrl = null;
+      try {
+        ctrl = globeInst.controls();
+        if (ctrl) {
+          ctrl.autoRotate = !reduceMotion;
+          ctrl.autoRotateSpeed = 0.5;
+          ctrl.enableZoom = true;
+          ctrl.zoomSpeed = 1.4;
+          ctrl.minDistance = 110;
+          ctrl.maxDistance = 900;
+          ctrl.enableDamping = true;
+          ctrl.dampingFactor = 0.08;
+          wrap.addEventListener('mouseenter', () => { ctrl.autoRotate = false; });
+          wrap.addEventListener('mouseleave', () => { if (!reduceMotion) ctrl.autoRotate = true; });
+        }
+      } catch (ctrlErr) {
+        showDebug('[Globe] controls error: ' + ctrlErr.message, '#FAA74A');
+      }
+
+      // Visible zoom controls
+      try {
+        const zoomBox = document.createElement('div');
+        zoomBox.className = 'globe-zoom-controls';
+        zoomBox.innerHTML = `
+          <button class="zoom-btn" data-z="in" aria-label="Zoom in">+</button>
+          <button class="zoom-btn" data-z="out" aria-label="Zoom out">&minus;</button>
+          <button class="zoom-btn" data-z="reset" aria-label="Reset view">&#9678;</button>
+        `;
+        wrap.appendChild(zoomBox);
+        zoomBox.addEventListener('click', (e) => {
+          const btn = e.target.closest('.zoom-btn');
+          if (!btn) return;
+          // pointOfView() with no args returns current { lat, lng, altitude }
+          const pov = globeInst.pointOfView();
+          if (btn.dataset.z === 'reset') {
+            globeInst.pointOfView({ lat: 22, lng: 12, altitude: 2.3 }, 650);
+            return;
+          }
+          let newAlt = pov.altitude;
+          if (btn.dataset.z === 'in') {
+            // Aggressive zoom in — halves altitude each click, floor at 0.18
+            newAlt = Math.max(0.18, pov.altitude * 0.5);
+          } else if (btn.dataset.z === 'out') {
+            // Aggressive zoom out — at least +0.6 or doubled, whichever is larger
+            newAlt = Math.min(7.5, Math.max(pov.altitude * 2.0, pov.altitude + 0.6));
+          }
+          globeInst.pointOfView({ lat: pov.lat, lng: pov.lng, altitude: newAlt }, 420);
+        });
+      } catch (zoomErr) {}
+
+      // Initial point of view
+      try { globeInst.pointOfView({ lat: 22, lng: 12, altitude: 2.3 }); } catch (povErr) {}
+
+      // Force a resize so the WebGL canvas matches the wrap dimensions
+      setTimeout(() => {
+        const rr = wrap.getBoundingClientRect();
+        if (rr.width > 0 && globeInst.width) {
+          try { globeInst.width(rr.width).height(rr.height); } catch (e) {}
+        }
+      }, 80);
+
+      applyFilter();
+
+      window.addEventListener('resize', () => {
+        const rr = wrap.getBoundingClientRect();
+        try { globeInst.width(rr.width).height(rr.height); } catch (e) {}
+      });
+
+      // Globe is up. Debug overlay only shows on errors.
+    } catch (e) {
+      showDebug('[Globe] FATAL: ' + e.message + ' — using 2D fallback', '#F05332');
+      showFallback(events);
+    }
+  }
+
+  function applyFilter() {
+    const filtered = activeYear === 'all'
+      ? allEvents
+      : allEvents.filter(e => String(e.year) === String(activeYear));
+    document.getElementById('eventCount').textContent = `${filtered.length} event${filtered.length === 1 ? '' : 's'}`;
+    if (globeInst) {
+      const indexed = filtered.map((e, i) => ({...e, _idx: i}));
+      try { globeInst.pointsData(indexed); } catch(e) {}
+      // Pulsing ring layer: only the most recent / upcoming events so the globe doesn't get noisy
+      const ringEvents = indexed.filter(e => e.year >= 2025);
+      try { globeInst.ringsData(ringEvents); } catch(e) {}
+    } else {
+      drawFallback(filtered);
+    }
+  }
+
+  function showFallback(events) {
+    const fb = document.getElementById('globeFallback');
+    fb.classList.add('active');
+    document.getElementById('globe-canvas').style.display = 'none';
+    drawFallback(events);
+  }
+
+  function drawFallback(events) {
+    const svg = document.getElementById('fallbackSvg');
+    if (!svg) return;
+    const W = 1000, H = 460;
+    const proj = (lat, lng) => [(lng + 180) / 360 * W, (90 - lat) / 180 * H];
+    let world = '<defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(31,26,20,0.08)" stroke-width="0.5"/></pattern></defs>';
+    world += `<rect width="100%" height="100%" fill="url(#grid)"/>`;
+    events.forEach(e => {
+      const [x, y] = proj(e.lat, e.lng);
+      const [primary, secondary] = paletteFor(e);
+      const inner = butterflySvg(primary, secondary)
+        .replace('<svg viewBox="0 0 67 59" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">', '')
+        .replace('</svg>', '');
+      world += `<g transform="translate(${x-10} ${y-9}) scale(0.30)"><title>${e.name} (${e.country}, ${e.year})</title>${inner}</g>`;
+    });
+    svg.innerHTML = world;
+  }
+
+  document.querySelectorAll('.filter-pill').forEach(p => {
+    p.addEventListener('click', () => {
+      document.querySelectorAll('.filter-pill').forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      activeYear = p.dataset.year;
+      applyFilter();
+    });
+  });
+
+  fetch('data/foh-events.json')
+    .then(r => r.json())
+    .then(data => {
+      allEvents = data.events || [];
+      // Always try the 3D globe first on desktop. Mobile gets the 2D fallback.
+      if (isMobile) {
+        showFallback(allEvents);
+        applyFilter();
+      } else {
+        initGlobe(allEvents);
+      }
+    })
+    .catch(err => {
+      console.error('Failed to load events JSON:', err);
+      document.getElementById('eventCount').textContent = '78 events';
+    });
+
+  // ---------------- Smooth scroll ----------------
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const tgt = a.getAttribute('href');
+      if (tgt && tgt !== '#' && document.querySelector(tgt)) {
+        e.preventDefault();
+        document.querySelector(tgt).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
