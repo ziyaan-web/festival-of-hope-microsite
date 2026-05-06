@@ -17,12 +17,15 @@ A single-page public microsite for the Festival of Hope, built as the "global im
 ## Where things live
 
 - **Project root:** `/Users/ziyaanvirji/IB Vault/programs/festival-of-hope/microsite/`
+- **GitHub repo:** https://github.com/ziyaan-web/festival-of-hope-microsite (currently **private**, account: `ziyaan-web`)
 - **Plan file:** `~/.claude/plans/https-notes-granola-ai-t-e477b9f3-8cc4-4-silly-wigderson.md`
-- **Site:** `index.html` (~1,240 lines, single file, all CSS + JS inline)
+- **Site:** `index.html` (~1,500 lines, single file, all CSS + JS inline)
 - **Data:** `data/foh-events.json` (78 events across 39 countries, 2022-2027, geocoded)
-- **Libs:** `assets/lib/` (Three.js, globe.gl, GSAP — self-hosted)
+- **Libs:** `assets/lib/` (globe.gl 2.34.4 self-contained with three.js, GSAP, three earth textures)
 - **Logos:** `assets/img/logos/` (IB, FoH color, FoH white, FoH butterfly PNG + SVG)
 - **Video thumbs:** `assets/img/videos/` (6 YouTube thumbnails)
+- **Playbook PDF:** `assets/playbook.pdf` (compressed from 71MB to 6MB)
+- **Domain:** **festivalhope.org** — Ziyaan to register at Cloudflare Registrar (~$11/yr)
 
 ## Locked decisions
 
