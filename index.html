@@ -690,6 +690,21 @@ section {
   cursor: pointer;
   transition: background 240ms ease, color 240ms ease, transform 240ms ease, box-shadow 240ms ease;
   white-space: nowrap;
+  max-width: 100%;
+}
+@media (max-width: 600px) {
+  .btn {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+    padding: 14px 22px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+  }
+  .btn::after { font-size: 14px; }
+}
+@media (max-width: 420px) {
+  .btn { padding: 12px 18px; font-size: 10px; letter-spacing: 0.14em; }
 }
 .btn::after { content: '\2192'; font-size: 16px; letter-spacing: 0; }
 .btn-primary {
@@ -1057,7 +1072,7 @@ footer::before {
     </div>
 
     <div class="video-cta-row reveal">
-      <a href="https://www.youtube.com/@InternationalBaccalaureate/search?query=festival%20of%20hope" target="_blank" rel="noopener" class="btn btn-ghost">Watch every Festival of Hope on YouTube</a>
+      <a href="https://www.youtube.com/@FestivalofHope" target="_blank" rel="noopener" class="btn btn-ghost">Watch every Festival of Hope on YouTube</a>
     </div>
   </div>
 </section>
@@ -1484,13 +1499,8 @@ footer::before {
     .then(r => r.json())
     .then(data => {
       allEvents = data.events || [];
-      // Always try the 3D globe first on desktop. Mobile gets the 2D fallback.
-      if (isMobile) {
-        showFallback(allEvents);
-        applyFilter();
-      } else {
-        initGlobe(allEvents);
-      }
+      // 3D globe on every device. Mobile gets it too — globe.gl handles touch nicely.
+      initGlobe(allEvents);
     })
     .catch(err => {
       console.error('Failed to load events JSON:', err);
