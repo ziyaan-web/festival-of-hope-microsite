@@ -1,0 +1,21 @@
+;; Festival of Hope — Cloudflare DNS zone import for festivalhope.org
+;; Points the apex to GitHub Pages, www to ziyaan-web.github.io
+;; Generated 2026-05-06
+
+$ORIGIN festivalhope.org.
+$TTL 3600
+
+;; Apex (festivalhope.org) → GitHub Pages IPv4
+@      3600  IN  A      185.199.108.153
+@      3600  IN  A      185.199.109.153
+@      3600  IN  A      185.199.110.153
+@      3600  IN  A      185.199.111.153
+
+;; Apex → GitHub Pages IPv6
+@      3600  IN  AAAA   2606:50c0:8000::153
+@      3600  IN  AAAA   2606:50c0:8001::153
+@      3600  IN  AAAA   2606:50c0:8002::153
+@      3600  IN  AAAA   2606:50c0:8003::153
+
+;; www subdomain → GitHub Pages
+www    3600  IN  CNAME  ziyaan-web.github.io.

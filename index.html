@@ -213,8 +213,10 @@ section {
 
 /* ============ HERO: title + numbers + globe ============ */
 #hero {
-  padding-top: clamp(110px, 14vh, 170px);
-  padding-bottom: clamp(60px, 7vw, 110px);
+  padding-top: clamp(96px, 12vh, 170px);
+  padding-bottom: clamp(48px, 6vw, 110px);
+  padding-left: clamp(16px, 4vw, 64px);
+  padding-right: clamp(16px, 4vw, 64px);
   position: relative;
   overflow: hidden;
 }
@@ -249,7 +251,7 @@ section {
   margin: 0;
   font-family: var(--sans);
   font-weight: 900;
-  font-size: clamp(56px, 8vw, 132px);
+  font-size: clamp(40px, 8vw, 132px);
   line-height: 0.96;
   letter-spacing: -0.03em;
   color: var(--navy);
@@ -262,8 +264,8 @@ section {
   letter-spacing: 0;
 }
 .hero-eyebrow {
-  font-size: 11px;
-  letter-spacing: 0.32em;
+  font-size: clamp(10px, 1.1vw, 11px);
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   font-weight: 800;
   color: var(--vermillion);
@@ -271,6 +273,7 @@ section {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 .hero-eyebrow::before {
   content: '';
@@ -357,8 +360,16 @@ section {
   .num-tile { min-height: 200px; }
 }
 @media (max-width: 540px) {
-  .num-tile { min-height: 180px; padding: 20px; }
-  .num-tile .big-num { font-size: 52px; }
+  .num-tile { min-height: 170px; padding: 18px; border-radius: 14px; }
+  .num-tile .big-num { font-size: 44px; }
+  .num-tile .num-label { font-size: 9px; letter-spacing: 0.2em; }
+  .num-tile .num-sub { font-size: 11px; }
+  .num-tile::before { width: 11px; height: 11px; top: 16px; right: 16px; }
+}
+@media (max-width: 420px) {
+  .numbers-strip { gap: 8px; }
+  .num-tile { min-height: 150px; padding: 16px; }
+  .num-tile .big-num { font-size: 38px; }
 }
 
 /* ============ Globe ============ */
@@ -502,10 +513,18 @@ section {
 .globe-tip .meta { color: var(--ink-mute); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; }
 
 @media (max-width: 700px) {
-  #globe-canvas { height: 420px; }
+  #globe-canvas { height: 380px; }
   .globe-wrap { border-radius: 22px; }
-  .globe-overlay-top { flex-direction: column; align-items: stretch; }
-  .filter-pills { width: 100%; overflow-x: auto; flex-wrap: nowrap; }
+  .globe-overlay-top { flex-direction: column; align-items: stretch; gap: 8px; }
+  .filter-pills { width: 100%; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+  .filter-pill { flex-shrink: 0; padding: 8px 12px; font-size: 10px; }
+  .globe-event-count { align-self: flex-end; padding: 8px 14px; font-size: 10px; }
+  .globe-zoom-controls { bottom: 14px; right: 14px; padding: 4px; }
+  .globe-zoom-controls .zoom-btn { width: 34px; height: 34px; font-size: 18px; }
+}
+@media (max-width: 420px) {
+  #globe-canvas { height: 320px; }
+  .globe-overlay-top { top: 12px; left: 12px; right: 12px; }
 }
 
 /* ============ Butterfly swarm (loading) ============ */
@@ -1154,7 +1173,8 @@ footer::before {
         el.innerHTML = butterflySvg(colors[0], colors[1]);
         const startX = -120 + Math.random() * 60;
         const startY = 60 + Math.random() * (window.innerHeight * 0.65);
-        const size = 28 + Math.round(Math.random() * 22);
+        const isNarrow = window.innerWidth < 700;
+        const size = isNarrow ? (18 + Math.round(Math.random() * 12)) : (28 + Math.round(Math.random() * 22));
         el.style.left = startX + 'px';
         el.style.top = startY + 'px';
         el.style.width = size + 'px';
