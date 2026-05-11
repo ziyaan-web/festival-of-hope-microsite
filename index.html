@@ -289,8 +289,8 @@ section {
 
 .numbers-strip {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(10px, 1.4vw, 18px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(12px, 1.6vw, 20px);
   margin-bottom: clamp(36px, 5vw, 64px);
   position: relative;
   z-index: 2;
@@ -299,7 +299,7 @@ section {
   position: relative;
   background: var(--vermillion);
   color: var(--white);
-  padding: clamp(22px, 2.6vw, 34px);
+  padding: clamp(24px, 2.8vw, 36px);
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -310,7 +310,6 @@ section {
 }
 .num-tile:nth-child(2) { background: var(--gold); color: var(--navy); }
 .num-tile:nth-child(3) { background: var(--cyan); color: var(--navy); }
-.num-tile:nth-child(4) { background: var(--soft-green); color: var(--navy); }
 .num-tile:hover { transform: translateY(-4px); }
 
 /* Decorative dot in corner — playbook DNA */
@@ -326,17 +325,18 @@ section {
 .num-tile:nth-child(2)::before { background: var(--navy); opacity: 0.4; }
 
 .num-tile .num-label {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.24em;
+  font-size: clamp(15px, 1.5vw, 19px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0 0 auto;
-  opacity: 0.86;
+  opacity: 1;
+  line-height: 1.05;
 }
 .num-tile .big-num {
   font-family: var(--sans);
   font-weight: 900;
-  font-size: clamp(54px, 6.4vw, 96px);
+  font-size: clamp(54px, 6vw, 88px);
   line-height: 0.94;
   letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
@@ -344,28 +344,25 @@ section {
   white-space: nowrap;
 }
 .num-tile .num-sub {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
-  margin: 10px 0 0;
+  margin: 12px 0 0;
   font-weight: 600;
-  opacity: 0.78;
+  opacity: 0.85;
   letter-spacing: 0.01em;
-  max-width: 90%;
+  max-width: 92%;
 }
-@media (max-width: 900px) {
-  .numbers-strip { grid-template-columns: repeat(2, 1fr); }
-  .num-tile { min-height: 200px; }
+@media (max-width: 800px) {
+  .numbers-strip { grid-template-columns: 1fr; gap: 10px; }
+  .num-tile { min-height: 0; padding: 24px 22px; flex-direction: row; align-items: center; justify-content: space-between; gap: 18px; }
+  .num-tile::before { top: 18px; right: 18px; }
+  .num-tile .num-label { order: 0; flex: 1 1 auto; font-size: 17px; margin: 0; }
+  .num-tile .big-num { order: 1; flex: 0 0 auto; font-size: 54px; }
+  .num-tile .num-sub { display: none; }
 }
 @media (max-width: 540px) {
-  .num-tile { min-height: 200px; padding: 20px; border-radius: 14px; }
-  .num-tile .big-num { font-size: 54px; }
-  .num-tile .num-label { font-size: 9px; letter-spacing: 0.2em; }
-  .num-tile .num-sub { font-size: 11px; }
-  .num-tile::before { width: 11px; height: 11px; top: 16px; right: 16px; }
-}
-@media (max-width: 420px) {
-  .numbers-strip { gap: 8px; }
-  .num-tile { min-height: 180px; padding: 18px; }
+  .num-tile { padding: 20px 18px; border-radius: 14px; }
+  .num-tile .num-label { font-size: 14px; letter-spacing: 0.02em; }
   .num-tile .big-num { font-size: 46px; }
 }
 
@@ -731,7 +728,7 @@ section {
 .btn-ghost:hover { background: var(--vermillion); color: var(--white); transform: translateY(-3px); }
 .dark .btn-ghost { background: var(--gold); color: var(--navy); }
 
-/* ============ CALENDAR — Upcoming festivals ============ */
+/* ============ CALENDAR — Upcoming festivals (month-grouped agenda) ============ */
 #calendar {
   background: var(--white);
   padding: clamp(80px, 9vw, 140px) var(--gutter);
@@ -742,83 +739,142 @@ section {
   margin-bottom: 56px;
   max-width: 880px;
 }
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(14px, 1.8vw, 22px);
-}
-.cal-card {
-  background: var(--off-white);
-  padding: clamp(22px, 2.4vw, 30px);
-  border-radius: 18px;
-  border-top: 6px solid var(--vermillion);
-  transition: transform 320ms cubic-bezier(0.22,0.61,0.36,1), box-shadow 320ms ease, border-color 240ms ease;
+.cal-months {
   display: flex;
   flex-direction: column;
-  min-height: 220px;
-  position: relative;
+  gap: clamp(40px, 5vw, 64px);
 }
-.cal-card:nth-child(4n+2) { border-top-color: var(--gold); }
-.cal-card:nth-child(4n+3) { border-top-color: var(--cyan); }
-.cal-card:nth-child(4n) { border-top-color: var(--soft-green); }
-.cal-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+.cal-month-group { position: relative; }
+.cal-month-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--rule);
 }
-.cal-card .cal-date {
+.cal-month-name {
   font-family: var(--sans);
   font-weight: 900;
-  font-size: clamp(22px, 2.4vw, 30px);
+  font-size: clamp(28px, 3.2vw, 44px);
   letter-spacing: -0.02em;
-  line-height: 1.05;
-  color: var(--navy);
-  margin-bottom: 18px;
-  font-variant-numeric: tabular-nums;
   text-transform: uppercase;
+  color: var(--navy);
+  line-height: 1;
+  margin: 0;
 }
-.cal-card .cal-date small {
-  display: block;
-  font-size: 11px;
+.cal-month-year {
+  font-family: var(--sans);
   font-weight: 700;
+  font-size: clamp(14px, 1.2vw, 17px);
   letter-spacing: 0.22em;
   color: var(--ink-mute);
-  margin-top: 6px;
+  text-transform: uppercase;
 }
-.cal-card .cal-name {
-  font-size: clamp(15px, 1.4vw, 18px);
-  font-weight: 800;
+.cal-events { display: flex; flex-direction: column; gap: 14px; }
+
+/* Tear-off calendar page */
+.cal-event {
+  display: grid;
+  grid-template-columns: 92px 1fr auto;
+  gap: clamp(18px, 2.2vw, 30px);
+  padding: 22px 26px;
+  background: var(--off-white);
+  border-radius: 14px;
+  align-items: center;
+  transition: transform 280ms cubic-bezier(0.22,0.61,0.36,1), box-shadow 280ms ease;
+}
+.cal-event:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+}
+.cal-leaf {
+  position: relative;
+  width: 92px;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 6px 6px 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+.cal-leaf::before {
+  content: '';
+  display: block;
+  height: 6px;
+  background: var(--vermillion);
+  margin: -6px -6px 6px;
+}
+.cal-event:nth-child(4n+2) .cal-leaf::before { background: var(--gold); }
+.cal-event:nth-child(4n+3) .cal-leaf::before { background: var(--cyan); }
+.cal-event:nth-child(4n) .cal-leaf::before { background: var(--soft-green); }
+.cal-event:nth-child(4n+2) .cal-status { color: var(--gold-warm); }
+.cal-event:nth-child(4n+3) .cal-status { color: var(--cyan); }
+.cal-event:nth-child(4n) .cal-status { color: var(--teal); }
+
+.cal-leaf-day {
+  font-family: var(--sans);
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1;
   color: var(--navy);
-  margin: 0 0 8px;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.cal-leaf-month {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 4px;
+}
+
+.cal-event-body { min-width: 0; }
+.cal-event-name {
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(16px, 1.5vw, 19px);
+  color: var(--navy);
+  margin: 0 0 4px;
   line-height: 1.25;
   letter-spacing: -0.005em;
 }
-.cal-card .cal-detail {
+.cal-event-detail {
   font-size: 13px;
   color: var(--ink-soft);
-  line-height: 1.5;
-  margin: 0 0 auto;
+  line-height: 1.45;
+  margin: 0;
 }
-.cal-card .cal-status {
+.cal-status {
   font-size: 10px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   font-weight: 800;
   color: var(--vermillion);
-  margin-top: 18px;
+  white-space: nowrap;
 }
-.cal-card:nth-child(4n+2) .cal-status { color: var(--gold-warm); }
-.cal-card:nth-child(4n+3) .cal-status { color: var(--cyan); }
-.cal-card:nth-child(4n) .cal-status { color: var(--teal); }
+
 .calendar-empty {
-  grid-column: 1 / -1;
   text-align: center;
   padding: 60px 20px;
   color: var(--ink-mute);
   font-size: 14px;
   font-style: italic;
 }
-@media (max-width: 900px) { .calendar-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 540px) { .calendar-grid { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .cal-event {
+    grid-template-columns: 72px 1fr;
+    gap: 16px;
+    padding: 18px 20px;
+  }
+  .cal-leaf { width: 72px; }
+  .cal-leaf-day { font-size: 26px; }
+  .cal-status {
+    grid-column: 2;
+    margin-top: 4px;
+  }
+}
 
 /* ============ CTA — Host your own ============ */
 #cta {
@@ -1048,11 +1104,6 @@ footer::before {
         <div class="big-num" data-target="1000" data-suffix="+">0</div>
         <p class="num-sub">IB and non-IB, running festival events.</p>
       </div>
-      <div class="num-tile reveal delay-4">
-        <p class="num-label">Regions</p>
-        <div class="big-num" data-target="10" data-suffix="">0</div>
-        <p class="num-sub">a truly global portfolio of action.</p>
-      </div>
     </div>
 
     <div class="globe-wrap reveal">
@@ -1065,6 +1116,7 @@ footer::before {
           <button class="filter-pill" data-year="2025">2025</button>
           <button class="filter-pill" data-year="2026">2026</button>
         </div>
+        <div class="globe-event-count" id="eventCount" hidden></div>
       </div>
       <div id="globe-canvas" role="img" aria-label="Interactive globe of Festival of Hope events"></div>
       <div class="globe-fallback" id="globeFallback" aria-hidden="true">
@@ -1160,7 +1212,7 @@ footer::before {
       <h2 class="big-headline">Upcoming <span class="accent">festivals</span>.</h2>
       <p class="lede">Confirmed Festival of Hope events around the world. Check back as new dates are added.</p>
     </div>
-    <div class="calendar-grid" id="calendarGrid">
+    <div class="cal-months" id="calendarGrid">
       <div class="calendar-empty">Loading upcoming events&hellip;</div>
     </div>
   </div>
@@ -1538,7 +1590,17 @@ footer::before {
     const filtered = activeYear === 'all'
       ? allEvents
       : allEvents.filter(e => String(e.year) === String(activeYear));
-    // Event count badge removed per Jenn's feedback (was confusing vs 90+ countries)
+    // Event count badge: only visible when a specific year is selected (hide on "All")
+    const eventBadge = document.getElementById('eventCount');
+    if (eventBadge) {
+      if (activeYear === 'all') {
+        eventBadge.hidden = true;
+        eventBadge.textContent = '';
+      } else {
+        eventBadge.hidden = false;
+        eventBadge.textContent = `${filtered.length} event${filtered.length === 1 ? '' : 's'} in ${activeYear}`;
+      }
+    }
     if (globeInst) {
       const indexed = filtered.map((e, i) => ({...e, _idx: i}));
       try { globeInst.pointsData(indexed); } catch(e) {}
@@ -1596,7 +1658,7 @@ footer::before {
       // event count display removed
     });
 
-  // ---------------- Calendar (upcoming events) ----------------
+  // ---------------- Calendar (month-grouped agenda) ----------------
   function cleanEventName(raw) {
     if (!raw) return '';
     let n = raw.trim().replace(/\s+/g, ' ');
@@ -1605,19 +1667,25 @@ footer::before {
     else if (/\bFoH\b/i.test(n)) n = 'Festival of Hope ' + n.replace(/\bFoH\b/i, '').trim();
     return n.replace(/\s+/g, ' ').trim();
   }
-  function fmtMonth(d) {
+  function fmtMonthShort(d) {
     return d.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' }).toUpperCase();
   }
-  function buildDateLine(s, e) {
-    // s, e: ISO date strings YYYY-MM-DD
+  function fmtMonthLong(d) {
+    return d.toLocaleString('en-US', { month: 'long', timeZone: 'UTC' });
+  }
+  function buildLeaf(s, e) {
+    // Tear-off calendar page: big day(s) + month abbrev
     const sd = new Date(s + 'T00:00:00Z');
     const ed = new Date(e + 'T00:00:00Z');
     const sameDay = s === e;
     const sameMonth = sd.getUTCMonth() === ed.getUTCMonth() && sd.getUTCFullYear() === ed.getUTCFullYear();
-    const yr = sd.getUTCFullYear();
-    if (sameDay) return `${fmtMonth(sd)} ${sd.getUTCDate()}<small>${yr}</small>`;
-    if (sameMonth) return `${fmtMonth(sd)} ${sd.getUTCDate()}–${ed.getUTCDate()}<small>${yr}</small>`;
-    return `${fmtMonth(sd)} ${sd.getUTCDate()} – ${fmtMonth(ed)} ${ed.getUTCDate()}<small>${yr}</small>`;
+    if (sameDay) {
+      return `<div class="cal-leaf-day">${sd.getUTCDate()}</div><div class="cal-leaf-month">${fmtMonthShort(sd)}</div>`;
+    }
+    if (sameMonth) {
+      return `<div class="cal-leaf-day" style="font-size:22px;">${sd.getUTCDate()}–${ed.getUTCDate()}</div><div class="cal-leaf-month">${fmtMonthShort(sd)}</div>`;
+    }
+    return `<div class="cal-leaf-day" style="font-size:14px;line-height:1.2;">${fmtMonthShort(sd)} ${sd.getUTCDate()}<br>${fmtMonthShort(ed)} ${ed.getUTCDate()}</div>`;
   }
   function buildDetail(ev) {
     const parts = [];
@@ -1625,6 +1693,18 @@ footer::before {
     if (ev.location && ev.location !== 'USA' && ev.location !== ev.name) parts.push(ev.location);
     if (ev.format) parts.push(ev.format);
     return parts.join(' · ') || 'Details to be confirmed';
+  }
+  function groupByMonth(events) {
+    const groups = {};
+    events.forEach(ev => {
+      const d = new Date(ev.date_start + 'T00:00:00Z');
+      const key = `${d.getUTCFullYear()}-${String(d.getUTCMonth()).padStart(2, '0')}`;
+      if (!groups[key]) {
+        groups[key] = { year: d.getUTCFullYear(), month: d.getUTCMonth(), monthName: fmtMonthLong(d), events: [] };
+      }
+      groups[key].events.push(ev);
+    });
+    return Object.values(groups).sort((a, b) => (a.year - b.year) || (a.month - b.month));
   }
   fetch('data/upcoming-events.json')
     .then(r => r.json())
@@ -1636,17 +1716,28 @@ footer::before {
         grid.innerHTML = '<div class="calendar-empty">More festivals announcing soon.</div>';
         return;
       }
-      grid.innerHTML = events.map((ev, i) => {
-        const dateLine = buildDateLine(ev.date_start, ev.date_end);
-        const name = cleanEventName(ev.name);
-        const detail = buildDetail(ev);
-        const delay = Math.min(4, (i % 4) + 1);
-        return `<article class="cal-card reveal delay-${delay}">
-          <div class="cal-date">${dateLine}</div>
-          <p class="cal-name">${name}</p>
-          <p class="cal-detail">${detail}</p>
-          <p class="cal-status">${ev.status}</p>
-        </article>`;
+      const groups = groupByMonth(events);
+      grid.innerHTML = groups.map((g, gi) => {
+        const eventsHtml = g.events.map((ev, i) => {
+          const name = cleanEventName(ev.name);
+          const detail = buildDetail(ev);
+          const leafHtml = buildLeaf(ev.date_start, ev.date_end);
+          return `<article class="cal-event">
+            <div class="cal-leaf">${leafHtml}</div>
+            <div class="cal-event-body">
+              <h4 class="cal-event-name">${name}</h4>
+              <p class="cal-event-detail">${detail}</p>
+            </div>
+            <div class="cal-status">${ev.status}</div>
+          </article>`;
+        }).join('');
+        return `<div class="cal-month-group reveal delay-${Math.min(4, gi + 1)}">
+          <div class="cal-month-header">
+            <h3 class="cal-month-name">${g.monthName}</h3>
+            <span class="cal-month-year">${g.year}</span>
+          </div>
+          <div class="cal-events">${eventsHtml}</div>
+        </div>`;
       }).join('');
       grid.querySelectorAll('.reveal').forEach(el => io.observe(el));
     })
