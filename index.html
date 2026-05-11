@@ -115,21 +115,18 @@ a { color: inherit; }
   text-decoration: none;
   color: var(--navy);
 }
-.brand-mark .bf-icon {
-  width: 36px; height: 32px;
-  flex-shrink: 0;
+.brand-mark img.brand-lockup {
+  height: 44px;
+  width: auto;
+  display: block;
+  transition: opacity 240ms ease;
 }
-.brand-mark .bf-icon svg { width: 100%; height: 100%; }
-.brand-mark .wordmark {
-  font-family: var(--sans);
-  font-weight: 900;
-  font-size: 16px;
-  letter-spacing: -0.005em;
-  text-transform: uppercase;
-  color: var(--navy);
-  line-height: 1;
+.brand-mark:hover img.brand-lockup { opacity: 0.78; }
+.site-header.scrolled .brand-mark img.brand-lockup { height: 38px; }
+@media (max-width: 540px) {
+  .brand-mark img.brand-lockup { height: 32px; }
+  .site-header.scrolled .brand-mark img.brand-lockup { height: 28px; }
 }
-.brand-mark .wordmark .accent { color: var(--vermillion); }
 .header-cta {
   display: inline-flex;
   align-items: center;
@@ -302,12 +299,12 @@ section {
   position: relative;
   background: var(--vermillion);
   color: var(--white);
-  padding: clamp(20px, 2.4vw, 30px);
+  padding: clamp(22px, 2.6vw, 34px);
   display: flex;
   flex-direction: column;
   text-align: left;
   border-radius: 18px;
-  min-height: 240px;
+  min-height: 280px;
   overflow: hidden;
   transition: transform 360ms cubic-bezier(0.22,0.61,0.36,1);
 }
@@ -339,7 +336,7 @@ section {
 .num-tile .big-num {
   font-family: var(--sans);
   font-weight: 900;
-  font-size: clamp(44px, 5.2vw, 76px);
+  font-size: clamp(54px, 6.4vw, 96px);
   line-height: 0.94;
   letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
@@ -360,16 +357,16 @@ section {
   .num-tile { min-height: 200px; }
 }
 @media (max-width: 540px) {
-  .num-tile { min-height: 170px; padding: 18px; border-radius: 14px; }
-  .num-tile .big-num { font-size: 44px; }
+  .num-tile { min-height: 200px; padding: 20px; border-radius: 14px; }
+  .num-tile .big-num { font-size: 54px; }
   .num-tile .num-label { font-size: 9px; letter-spacing: 0.2em; }
   .num-tile .num-sub { font-size: 11px; }
   .num-tile::before { width: 11px; height: 11px; top: 16px; right: 16px; }
 }
 @media (max-width: 420px) {
   .numbers-strip { gap: 8px; }
-  .num-tile { min-height: 150px; padding: 16px; }
-  .num-tile .big-num { font-size: 38px; }
+  .num-tile { min-height: 180px; padding: 18px; }
+  .num-tile .big-num { font-size: 46px; }
 }
 
 /* ============ Globe ============ */
@@ -734,6 +731,95 @@ section {
 .btn-ghost:hover { background: var(--vermillion); color: var(--white); transform: translateY(-3px); }
 .dark .btn-ghost { background: var(--gold); color: var(--navy); }
 
+/* ============ CALENDAR — Upcoming festivals ============ */
+#calendar {
+  background: var(--white);
+  padding: clamp(80px, 9vw, 140px) var(--gutter);
+  position: relative;
+}
+.calendar-headline {
+  text-align: left;
+  margin-bottom: 56px;
+  max-width: 880px;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
+}
+.cal-card {
+  background: var(--off-white);
+  padding: clamp(22px, 2.4vw, 30px);
+  border-radius: 18px;
+  border-top: 6px solid var(--vermillion);
+  transition: transform 320ms cubic-bezier(0.22,0.61,0.36,1), box-shadow 320ms ease, border-color 240ms ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  position: relative;
+}
+.cal-card:nth-child(4n+2) { border-top-color: var(--gold); }
+.cal-card:nth-child(4n+3) { border-top-color: var(--cyan); }
+.cal-card:nth-child(4n) { border-top-color: var(--soft-green); }
+.cal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+.cal-card .cal-date {
+  font-family: var(--sans);
+  font-weight: 900;
+  font-size: clamp(22px, 2.4vw, 30px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--navy);
+  margin-bottom: 18px;
+  font-variant-numeric: tabular-nums;
+  text-transform: uppercase;
+}
+.cal-card .cal-date small {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--ink-mute);
+  margin-top: 6px;
+}
+.cal-card .cal-name {
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 8px;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+.cal-card .cal-detail {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin: 0 0 auto;
+}
+.cal-card .cal-status {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--vermillion);
+  margin-top: 18px;
+}
+.cal-card:nth-child(4n+2) .cal-status { color: var(--gold-warm); }
+.cal-card:nth-child(4n+3) .cal-status { color: var(--cyan); }
+.cal-card:nth-child(4n) .cal-status { color: var(--teal); }
+.calendar-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ink-mute);
+  font-size: 14px;
+  font-style: italic;
+}
+@media (max-width: 900px) { .calendar-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .calendar-grid { grid-template-columns: 1fr; } }
+
 /* ============ CTA — Host your own ============ */
 #cta {
   padding-top: clamp(100px, 11vw, 180px);
@@ -929,17 +1015,7 @@ footer::before {
 
 <header class="site-header" id="siteHeader">
   <a href="#hero" class="brand-mark" aria-label="Festival of Hope home">
-    <span class="bf-icon">
-      <svg viewBox="0 0 67 59" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M65.0243 46.205C64.6509 44.5631 64.2622 42.829 63.945 41.049C62.0627 41.673 60.0473 42.0157 57.9552 42.0157C53.1521 42.0157 48.7633 40.2357 45.4231 37.3047C45.4334 37.6525 45.4385 38.0055 45.4385 38.3533C45.4385 42.783 44.6917 47.0388 43.3208 51.0081C49.2441 55.3969 56.3439 58.3484 61.2391 58.3484C67.766 58.3484 66.5844 53.1156 65.0192 46.205H65.0243Z" fill="#FFD400"/>
-        <path d="M63.9909 24.8646C64.1802 22.9669 64.3694 21.0641 64.5024 19.2329C62.9372 18.2201 61.0702 17.6318 59.065 17.6318C53.5407 17.6318 49.0649 22.082 49.0649 27.5757C49.0649 30.2816 50.1545 32.7317 51.9192 34.5271C53.7351 36.3737 56.2671 37.5195 59.0701 37.5195C60.6149 37.5195 62.0778 37.1717 63.3822 36.5476C63.3413 35.9184 63.3157 35.2842 63.3157 34.655C63.3157 34.6141 63.3157 34.5681 63.3157 34.5271C63.3259 31.5808 63.6584 28.2304 63.996 24.8646H63.9909Z" fill="#E9E9E1"/>
-        <path d="M8.90624 0C1.38699 0 0.466268 9.8671 2.66578 22.6242C3.83203 22.3583 5.04432 22.215 6.29241 22.215C15.2592 22.215 22.5279 29.4427 22.5279 38.3533C22.5279 41.2178 21.7759 43.9032 20.4613 46.2357C26.6302 42.3226 31.5816 36.2919 31.5816 31.0489C31.5714 20.9363 17.3769 0 8.90624 0Z" fill="#BCBEC0"/>
-        <path d="M45.4283 37.3048C45.4027 36.3687 45.3465 35.4429 45.2544 34.5273C44.6661 28.5426 42.7173 22.9568 39.7198 18.0821C39.7045 18.0565 39.684 18.0309 39.6687 18.0054C35.464 23.453 32.4614 29.6525 32.4614 34.6603C32.4614 39.0951 35.198 43.5862 39.1316 47.4481C40.4206 48.7115 41.8375 49.9085 43.326 51.0133C44.6968 47.044 45.4436 42.7882 45.4436 38.3585C45.4436 38.0056 45.4385 37.6577 45.4283 37.3099V37.3048Z" fill="#BCBEC0"/>
-        <path d="M6.28728 22.2151C5.03919 22.2151 3.8269 22.3583 2.66065 22.6243C2.93687 24.2356 3.26424 25.8929 3.63764 27.586C4.59417 31.9492 3.00337 35.939 1.63251 39.3713C-0.101523 43.714 -1.47749 47.1718 3.10567 49.356C7.95993 51.6732 14.7324 49.8624 20.4511 46.2358C21.7657 43.9033 22.5176 41.2178 22.5176 38.3533C22.5176 29.4377 15.249 22.2151 6.28217 22.2151H6.28728Z" fill="#F05332"/>
-        <path d="M59.0653 17.6316C61.0704 17.6316 62.9375 18.2199 64.5027 19.2327C65.0602 11.4474 64.5845 4.86426 58.6203 4.86426C53.0141 4.86426 45.3619 10.6853 39.7864 17.8516C39.7506 17.9027 39.7096 17.9488 39.6738 17.9999C39.6892 18.0255 39.7096 18.0511 39.725 18.0767C42.7224 22.9565 44.6764 28.5422 45.2596 34.5218C45.3516 35.4374 45.4079 36.3633 45.4335 37.2993C48.7737 40.2303 53.1573 42.0104 57.9656 42.0104C60.0576 42.0104 62.073 41.6677 63.9554 41.0436C63.6945 39.5653 63.4848 38.0564 63.3876 36.5423C62.0832 37.1663 60.6203 37.5142 59.0755 37.5142C56.2724 37.5142 53.7405 36.3684 51.9246 34.5218C50.1599 32.7264 49.0703 30.2763 49.0703 27.5703C49.0703 22.0767 53.5461 17.6265 59.0704 17.6265L59.0653 17.6316Z" fill="#458080"/>
-      </svg>
-    </span>
-    <span class="wordmark">Festival of <span class="accent">Hope</span></span>
+    <img class="brand-lockup" src="assets/img/logos/foh-logo-horizontal.png" alt="Festival of Hope">
   </a>
   <a href="#cta" class="header-cta">Host your own</a>
 </header>
@@ -951,7 +1027,7 @@ footer::before {
   <div class="section-inner">
     <div class="hero-title-row reveal">
       <div>
-        <p class="hero-eyebrow">Since 2022 &middot; A global movement</p>
+        <p class="hero-eyebrow">Since 2022 &middot; A global youth movement</p>
         <h1 class="hero-title">Festival of <span class="accent">Hope</span>.</h1>
       </div>
     </div>
@@ -989,7 +1065,6 @@ footer::before {
           <button class="filter-pill" data-year="2025">2025</button>
           <button class="filter-pill" data-year="2026">2026</button>
         </div>
-        <div class="globe-event-count" id="eventCount">- events</div>
       </div>
       <div id="globe-canvas" role="img" aria-label="Interactive globe of Festival of Hope events"></div>
       <div class="globe-fallback" id="globeFallback" aria-hidden="true">
@@ -1073,6 +1148,20 @@ footer::before {
 
     <div class="video-cta-row reveal">
       <a href="https://www.youtube.com/@FestivalofHope" target="_blank" rel="noopener" class="btn btn-ghost">Watch every Festival of Hope on YouTube</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALENDAR — Upcoming festivals ============ -->
+<section id="calendar">
+  <div class="section-inner">
+    <div class="calendar-headline reveal">
+      <p class="eyebrow">What's coming up</p>
+      <h2 class="big-headline">Upcoming <span class="accent">festivals</span>.</h2>
+      <p class="lede">Confirmed Festival of Hope events around the world. Check back as new dates are added.</p>
+    </div>
+    <div class="calendar-grid" id="calendarGrid">
+      <div class="calendar-empty">Loading upcoming events&hellip;</div>
     </div>
   </div>
 </section>
@@ -1449,7 +1538,7 @@ footer::before {
     const filtered = activeYear === 'all'
       ? allEvents
       : allEvents.filter(e => String(e.year) === String(activeYear));
-    document.getElementById('eventCount').textContent = `${filtered.length} event${filtered.length === 1 ? '' : 's'}`;
+    // Event count badge removed per Jenn's feedback (was confusing vs 90+ countries)
     if (globeInst) {
       const indexed = filtered.map((e, i) => ({...e, _idx: i}));
       try { globeInst.pointsData(indexed); } catch(e) {}
@@ -1504,7 +1593,67 @@ footer::before {
     })
     .catch(err => {
       console.error('Failed to load events JSON:', err);
-      document.getElementById('eventCount').textContent = '78 events';
+      // event count display removed
+    });
+
+  // ---------------- Calendar (upcoming events) ----------------
+  function cleanEventName(raw) {
+    if (!raw) return '';
+    let n = raw.trim().replace(/\s+/g, ' ');
+    // Normalize "FoH X" → "Festival of Hope X"; "NYC FoH" → "Festival of Hope NYC"
+    if (/^FoH\b/i.test(n)) n = n.replace(/^FoH\s*(\(mini\))?\s*/i, 'Festival of Hope ');
+    else if (/\bFoH\b/i.test(n)) n = 'Festival of Hope ' + n.replace(/\bFoH\b/i, '').trim();
+    return n.replace(/\s+/g, ' ').trim();
+  }
+  function fmtMonth(d) {
+    return d.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' }).toUpperCase();
+  }
+  function buildDateLine(s, e) {
+    // s, e: ISO date strings YYYY-MM-DD
+    const sd = new Date(s + 'T00:00:00Z');
+    const ed = new Date(e + 'T00:00:00Z');
+    const sameDay = s === e;
+    const sameMonth = sd.getUTCMonth() === ed.getUTCMonth() && sd.getUTCFullYear() === ed.getUTCFullYear();
+    const yr = sd.getUTCFullYear();
+    if (sameDay) return `${fmtMonth(sd)} ${sd.getUTCDate()}<small>${yr}</small>`;
+    if (sameMonth) return `${fmtMonth(sd)} ${sd.getUTCDate()}–${ed.getUTCDate()}<small>${yr}</small>`;
+    return `${fmtMonth(sd)} ${sd.getUTCDate()} – ${fmtMonth(ed)} ${ed.getUTCDate()}<small>${yr}</small>`;
+  }
+  function buildDetail(ev) {
+    const parts = [];
+    if (ev.schools && ev.schools.length > 1) parts.push(ev.schools.split(',')[0].trim());
+    if (ev.location && ev.location !== 'USA' && ev.location !== ev.name) parts.push(ev.location);
+    if (ev.format) parts.push(ev.format);
+    return parts.join(' · ') || 'Details to be confirmed';
+  }
+  fetch('data/upcoming-events.json')
+    .then(r => r.json())
+    .then(data => {
+      const grid = document.getElementById('calendarGrid');
+      if (!grid) return;
+      const events = data.events || [];
+      if (!events.length) {
+        grid.innerHTML = '<div class="calendar-empty">More festivals announcing soon.</div>';
+        return;
+      }
+      grid.innerHTML = events.map((ev, i) => {
+        const dateLine = buildDateLine(ev.date_start, ev.date_end);
+        const name = cleanEventName(ev.name);
+        const detail = buildDetail(ev);
+        const delay = Math.min(4, (i % 4) + 1);
+        return `<article class="cal-card reveal delay-${delay}">
+          <div class="cal-date">${dateLine}</div>
+          <p class="cal-name">${name}</p>
+          <p class="cal-detail">${detail}</p>
+          <p class="cal-status">${ev.status}</p>
+        </article>`;
+      }).join('');
+      grid.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    })
+    .catch(err => {
+      console.warn('[FoH] Calendar load failed:', err);
+      const grid = document.getElementById('calendarGrid');
+      if (grid) grid.innerHTML = '<div class="calendar-empty">Calendar temporarily unavailable.</div>';
     });
 
   // ---------------- Smooth scroll ----------------

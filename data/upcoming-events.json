@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-05-11T19:35:42.211574",
+  "today": "2026-05-11",
+  "events": [
+    {
+      "name": "IB Association of Egypt",
+      "status": "Confirmed",
+      "location": "",
+      "format": "In Person",
+      "ib_lead": "Jennifer Bahrami",
+      "date_start": "2026-05-22",
+      "date_end": "2026-05-22",
+      "attendance": "",
+      "schools": ""
+    },
+    {
+      "name": "Curtis High School",
+      "status": "Confirmed",
+      "location": "",
+      "format": "In Person",
+      "ib_lead": "Jennifer Bahrami",
+      "date_start": "2026-05-30",
+      "date_end": "2026-05-30",
+      "attendance": "200",
+      "schools": "NYC DOE District 31 schools were invited to the event."
+    },
+    {
+      "name": "NYC FoH",
+      "status": "Confirmed",
+      "location": "USA",
+      "format": "",
+      "ib_lead": "",
+      "date_start": "2026-06-01",
+      "date_end": "2026-06-30",
+      "attendance": "",
+      "schools": ""
+    },
+    {
+      "name": "FoH  Poland",
+      "status": "Confirmed",
+      "location": "Poland",
+      "format": "",
+      "ib_lead": "",
+      "date_start": "2026-06-02",
+      "date_end": "2026-06-02",
+      "attendance": "",
+      "schools": ""
+    },
+    {
+      "name": "FoH Mexico",
+      "status": "Confirmed",
+      "location": "Mexico",
+      "format": "",
+      "ib_lead": "",
+      "date_start": "2026-10-23",
+      "date_end": "2026-10-24",
+      "attendance": "",
+      "schools": ""
+    },
+    {
+      "name": "Tikkurilan Lukio",
+      "status": "Confirmed",
+      "location": "",
+      "format": "In Person",
+      "ib_lead": "Tim Logan",
+      "date_start": "2026-10-31",
+      "date_end": "2026-10-31",
+      "attendance": "200",
+      "schools": "Schools across Finland and possibly other Nordic countries"
+    },
+    {
+      "name": "FoH (mini) Sevilla, Spain",
+      "status": "In Conversation",
+      "location": "",
+      "format": "",
+      "ib_lead": "",
+      "date_start": "2026-12-17",
+      "date_end": "2026-12-18",
+      "attendance": "",
+      "schools": ""
+    }
+  ]
+}
